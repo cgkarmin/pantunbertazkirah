@@ -1,0 +1,15 @@
+PANTUN_PANTUN: Burung pipit di atas awan\nTerbang tinggi mencari makan,\nHidup ini penuh ujian\nSabar itu tiang keimanan.
+PANTUN_TEMA: Kesabaran
+PANTUN_MAKNA_PEMBAYANG: Menggambarkan usaha dan perjuangan dalam kehidupan.
+PANTUN_MAKNA_PANTUN: Mengingatkan bahwa hidup penuh cobaan dan kesabaran adalah fondasi yang kuat bagi keimanan.
+PANTUN_MAKNA_PERKATAAN: burung - unggas kecil, pipit - nama burung, di - pada, atas - bagian tertinggi, awan - kumpulan uap air di langit, terbang - bergerak di udara, tinggi - jauh dari tanah, mencari - berusaha menemukan, makan - kebutuhan pokok, hidup - keadaan bernyawa, ini - kata tunjuk, penuh - tidak kosong, ujian - cobaan, sabar - tahan menghadapi kesulitan, itu - kata tunjuk, tiang - penyangga utama, keimanan - keyakinan kepada Allah.
+PANTUN_HURAIAN: Pantun ini menggunakan metafora burung pipit yang terbang tinggi mencari makan untuk menggambarkan bahwa kehidupan memerlukan usaha. Kemudian, disampaikan pesan utama bahwa dalam menghadapi berbagai ujian hidup, kesabaran adalah hal yang sangat penting dalam menjaga keimanan.
+PANTUN_ISU: Ketahanan mental
+
+TAZKIRAH_ISU: Keutamaan Sedekah
+TAZKIRAH_FIRMAN: [QS. Al-Baqarah: 261] مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمْوَٰلَهُمْ فِى سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتْ سَبْعَ سَنَابِلَ فِى كُلِّ سُنۢبُلَةٍ مِّا۟ئَةُ حَبَّةٍ ۗ وَٱللَّهُ يُضَٰعِفُ لِمَن يَشَآءُ ۚ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ
+TAZKIRAH_HADITH: [HR. Muslim] مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ
+TAZKIRAH_IJMAK_ULAMAK: Para ulama sepakat tentang keutamaan sedekah dan anjurannya dalam Islam.
+TAZKIRAH_PANDANGAN_AZATIZAH: Ibnu Qayyim Al-Jauziyyah berkata, "Sedekah adalah salah satu pintu rezeki yang paling lebar."
+TAZKIRAH_HURAIAN: Ayat Al-Quran ini menggambarkan betapa besar pahala orang yang bersedekah di jalan Allah, diumpamakan seperti sebutir biji yang menumbuhkan tujuh tangkai, dan setiap tangkai memiliki seratus biji. Hadith juga menegaskan bahwa sedekah tidak akan mengurangi harta. Ini menunjukkan keberkahan dan keutamaan yang besar dalam berinfak.
+TAZKIRAH_KESIMPULAN: Marilah kita memperbanyak sedekah sebagai wujud ketaatan kepada Allah dan keyakinan akan janji-Nya. Sedekah tidak hanya bermanfaat bagi penerima, tetapi juga bagi pemberi, baik di dunia maupun di akhirat.

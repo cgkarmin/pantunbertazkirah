@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tazkirah Pantun WAH – Bahagian 1</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6f8f9;
+      margin: 0;
+      padding: 0;
+    }
+    .wadah {
+      max-width: 960px;
+      margin: auto;
+      padding: 20px;
+      background-color: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .tajuk {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #4b4b4b;
+      margin-bottom: 1.5rem;
+    }
+    .kad-pantun {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .baris {
+      background-color: #e0f7fa;
+      padding: 10px;
+      border-left: 5px solid #00796b;
+    }
+    .makna, .tema {
+      margin-bottom: 20px;
+    }
+    .subtajuk {
+      color: #6a1b9a;
+      margin-bottom: 5px;
+    }
+    .isi {
+      background: #f3e5f5;
+      padding: 10px;
+      border-left: 5px solid #8e24aa;
+    }
+    .butang-kendali {
+      text-align: center;
+    }
+    .butang {
+      background-color: #00796b;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .butang:hover {
+      background-color: #004d40;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wadah">
+    <header class="kepala">
+      <h1 class="tajuk">Bahagian Pantun</h1>
+      <h2 id="pantun_id" style="display:none;"></h2>
+    </header>
+
+    <section>
+      <label for="filter"><strong>Pilih Tema:</strong></label>
+      <select id="filter" onchange="filterPantun()">
+        <option value="ALL">Semua Tema</option>
+      </select>
+      <div id="filterGrid" style="margin-top: 10px;"></div>
+    </section>
+
+    <section class="kad-pantun">
+      <div class="baris" id="baris1">...</div>
+      <div class="baris" id="baris2">...</div>
+      <div class="baris" id="baris3">...</div>
+      <div class="baris" id="baris4">...</div>
+    </section>
+
+    <section class="makna">
+      <h2 class="subtajuk">Pembayang Maksud Pantun</h2>
+      <p id="maksudPembayang" class="isi">...</p>
+
+      <h2 class="subtajuk">Maksud Pantun</h2>
+      <p id="maksudPantun" class="isi">...</p>
+
+      <h2 class="subtajuk">Makna Perkataan</h2>
+      <p id="maknaPerkataan" class="isi">...</p>
+    </section>
+
+    <section class="tema">
+      <h2 class="subtajuk">Tema</h2>
+      <p id="tema" class="isi">...</p>
+
+      <h2 class="subtajuk">Huraian</h2>
+      <p id="huraian" class="isi">...</p>
+
+      <h2 class="subtajuk">Isu</h2>
+      <p id="isu" class="isi">...</p>
+    </section>
+
+    <div class="butang-kendali">
+      <button id="btnSeterusnya" class="butang" onclick="goToTazkirah()">Seterusnya</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

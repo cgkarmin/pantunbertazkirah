@@ -1,0 +1,17 @@
+# BAHAGIAN PANTUN:
+PANTUN_PANTUN: Kalau ada sumur di ladang\nBoleh kita menumpang mandi,\nKalau ada umur yang panjang\nBoleh kita berjumpa lagi.
+PANTUN_TEMA: Persahabatan
+PANTUN_MAKNA_PEMBAYANG: Menggambarkan harapan untuk pertemuan di masa depan jika diberikan kesempatan dan umur panjang.
+PANTUN_MAKNA_PANTUN: Menyatakan keinginan untuk menjaga silaturahmi dan bertemu kembali di lain waktu.
+PANTUN_MAKNA_PERKATAAN: kalau - jika, ada - hadir, sumur - lubang air, ladang - kebun tanaman, menumpang - singgah, mandi - membersihkan diri, umur - usia, panjang - lama, berjumpa - bertemu, lagi - sekali lagi
+PANTUN_HURAIAN: Pantun ini menggunakan perumpamaan kehidupan harian untuk menyampaikan harapan dan ajakan menjaga hubungan baik sesama manusia.
+PANTUN_ISU: Silaturahmi
+
+# BAHAGIAN TAZKIRAH:
+TAZKIRAH_ISU: Pentingnya Silaturahmi
+TAZKIRAH_FIRMAN: [An-Nur: 22] "Dan janganlah orang-orang yang mempunyai kelebihan dan kelapangan di antara kamu bersumpah bahwa mereka (tidak) akan memberi (bantuan) kepada kaum kerabat, orang-orang miskin dan orang-orang yang berhijrah pada jalan Allah, dan hendaklah mereka memaafkan dan berlapang dada. Apakah kamu tidak ingin bahwa Allah mengampunimu? Dan Allah adalah Maha Pengampun lagi Maha Penyayang."
+TAZKIRAH_HADITH: [HR. Bukhari dan Muslim] "Barang siapa yang ingin dilapangkan rezekinya dan dipanjangkan umurnya, maka hendaklah ia menyambung tali silaturahmi."
+TAZKIRAH_IJMAK_ULAMAK: Para ulama sepakat bahawa menyambung silaturahmi adalah amalan terpuji dan sangat dianjurkan dalam Islam.
+TAZKIRAH_PANDANGAN_AZATIZAH: [Dr. Zulkifli Mohamad Al-Bakri] Silaturahmi bukan sekadar adat, ia adalah ibadah yang berpahala dan menunjukkan kemuliaan akhlak seseorang Muslim.
+TAZKIRAH_HURAIAN: Ayat dan hadith yang disebut memberikan gambaran bahawa menjaga hubungan persaudaraan membawa manfaat dunia dan akhirat. Ia melatih empati, kasih sayang dan keberkatan dalam hidup bermasyarakat.
+TAZKIRAH_KESIMPULAN: Oleh itu, marilah kita mempererat silaturahmi dan menjadikannya sebahagian daripada gaya hidup seharian.

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Web Tazkirah Pantun</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6; /* Menambah jarak baris untuk pembacaan yang lebih baik */
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap; /* Benarkan wrapping pada skrin kecil */
+        }
+        .input-section, .output-section {
+            flex: 1;
+            min-width: 300px; /* Pastikan setiap bahagian ada lebar minimum */
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9; /* Sedikit warna latar */
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd; /* Warna border yang lebih lembut */
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical; /* Benarkan pengguna mengubah saiz textarea secara vertikal */
+        }
+        .controls {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: center; /* Pusatkan butang kontrol */
+        }
+        .controls button {
+            padding: 10px 15px;
+            margin: 5px; /* Jarak antara butang */
+            cursor: pointer;
+            background-color: #4CAF50; /* Warna hijau */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease; /* Animasi hover */
+            font-size: 1em; /* Saiz fon butang */
+        }
+         .controls button:hover {
+            background-color: #45a049;
+         }
+         .controls button:active {
+             background-color: #39843c; /* Warna lebih gelap saat diklik */
+         }
+        #fileInput {
+            display: none; /* Sembunyikan input file asal */
+        }
+        #outputArea {
+            white-space: pre-wrap; /* Memelihara baris baru dan jarak */
+            word-wrap: break-word; /* Memastikan teks tidak melimpah */
+            background-color: #fff;
+            padding: 10px;
+            border: 1px dashed #ccc; /* Border putus-putus untuk output */
+            min-height: 100px; /* Tinggi minimum untuk output area */
+             overflow-x: auto; /* Tambah scroll jika kandungan terlalu lebar */
+        }
+        h2, h3, h4 {
+            color: #333; /* Warna tajuk */
+            border-bottom: 1px solid #eee; /* Garis bawah pada tajuk */
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        h4 {
+             margin-bottom: 10px;
+        }
+        label {
+             display: block; /* Pastikan label berada di baris baru */
+             margin-bottom: 5px;
+             font-weight: bold;
+             color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Aplikasi Web Tazkirah Pantun</h1>
+
+    <div class="container">
+        <div class="input-section">
+            <h2>Input</h2>
+
+            <div>
+                <h3>Opsi 1: Buka File Teks</h3>
+                <button id="selectFileButton">Pilih File Teks</button> <input type="file" id="fileInput" accept=".txt"> <p><small>*(Format file .txt yang disokong: KEY: VALUE per baris)*</small></p>
+            </div>
+
+            <div>
+                <h3>Opsi 2: Masukkan ke Medan-Medan</h3>
+                <h4>PANTUN</h4>
+                <label for="pantun">Pantun:</label>
+                <textarea id="pantun" rows="4" placeholder="Masukkan teks pantun di sini..."></textarea>
+
+                <label for="tema">Tema:</label>
+                <input type="text" id="tema" placeholder="Contoh: Persahabatan, Keikhlasan">
+
+                <label for="maknaPembayang">Makna Pembayang Maksud Pantun:</label>
+                <textarea id="maknaPembayang" rows="2" placeholder="Jelaskan makna tersirat dari pembayang..."></textarea>
+
+                <label for="maknaPantun">Makna Pantun:</label>
+                <textarea id="maknaPantun" rows="2" placeholder="Jelaskan makna atau nasihat utama pantun..."></textarea>
+
+                <label for="maknaPerkataan">Makna Semua Perkataan dalam Pantun:</label>
+                <textarea id="maknaPerkataan" rows="3" placeholder="Jelaskan makna kata-kata sulit atau khusus..."></textarea>
+
+                <label for="huraianPantun">Huraian Pantun:</label>
+                <textarea id="huraianPantun" rows="3" placeholder="Huraikan lebih lanjut makna pantun..."></textarea>
+
+                <label for="isuPantun">Isu Pantun:</label>
+                <input type="text" id="isuPantun" placeholder="Contoh: Kepentingan menjaga alam">
+
+                <h4>TAZKIRAH</h4>
+                <label for="isuTazkirah">Isu Tazkirah:</label>
+                <input type="text" id="isuTazkirah" placeholder="Contoh: Taqwa, Sabar">
+
+                <label for="firman">Firman (Al-Quran):</label>
+                <textarea id="firman" rows="3" placeholder="Masukkan ayat Al-Quran (Arab & Melayu, pisah baris dengan '\n')..."></textarea>
+
+                <label for="hadith">Hadith:</label>
+                <textarea id="hadith" rows="3" placeholder="Masukkan teks Hadith (Arab & Melayu, pisah baris dengan '\n')..."></textarea>
+
+                <label for="ijmakUlamak">Ijmak Ulamak:</label>
+                <textarea id="ijmakUlamak" rows="3" placeholder="Masukkan ringkasan ijmak ulamak..."></textarea>
+
+                <label for="pandanganAzatizah">Pandangan Azatizah:</label>
+                <textarea id="pandanganAzatizah" rows="3" placeholder="Masukkan pandangan dari ustaz/ustazah..."></textarea>
+
+                <label for="huraianTazkirah">Huraian Tazkirah:</label>
+                <textarea id="huraianTazkirah" rows="3" placeholder="Huraikan isu tazkirah dengan lebih mendalam..."></textarea>
+
+                <label for="kesimpulan">Kesimpulan Tazkirah:</label>
+                <textarea id="kesimpulan" rows="3" placeholder="Ringkaskan poin utama tazkirah..."></textarea>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <h2>Output</h2>
+            <div id="outputArea">
+                <p>Data yang dimasukkan akan dipaparkan di sini apabila butang 'Paparkan Tazkirah Pantun' diklik.</p>
+                <p>Anda juga boleh memuatkan data dari fail teks atau Local Storage.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <h2>Kontrol</h2>
+        <button id="generateOutputButton">Paparkan Tazkirah Pantun</button>
+        <button id="saveButton">Simpan ke Browser</button> <button id="importButton">Muat dari Browser</button> <button id="exportButton">Ekspor sebagai File Teks</button> <p><small>*(Data disimpan/dimuat di browser yang sama)*</small></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to elements
+            const fileInput = document.getElementById('fileInput');
+            const selectFileButton = document.getElementById('selectFileButton'); // New button to trigger file input
+            const saveButton = document.getElementById('saveButton');
+            const exportButton = document.getElementById('exportButton');
+            const importButton = document.getElementById('importButton');
+            const outputArea = document.getElementById('outputArea');
+            const generateOutputButton = document.getElementById('generateOutputButton');
+
+            // Get references to all input fields (using the same map for consistency)
+            const inputFields = {
+                'PANTUN_PANTUN': document.getElementById('pantun'),
+                'PANTUN_TEMA': document.getElementById('tema'),
+                'PANTUN_MAKNA_PEMBAYANG': document.getElementById('maknaPembayang'),
+                'PANTUN_MAKNA_PANTUN': document.getElementById('maknaPantun'),
+                'PANTUN_MAKNA_PERKATAAN': document.getElementById('maknaPerkataan'),
+                'PANTUN_HURAIAN': document.getElementById('huraianPantun'),
+                'PANTUN_ISU': document.getElementById('isuPantun'),
+                'TAZKIRAH_ISU': document.getElementById('isuTazkirah'),
+                'TAZKIRAH_FIRMAN': document.getElementById('firman'),
+                'TAZKIRAH_HADITH': document.getElementById('hadith'),
+                'TAZKIRAH_IJMAK_ULAMAK': document.getElementById('ijmakUlamak'),
+                'TAZKIRAH_PANDANGAN_AZATIZAH': document.getElementById('pandanganAzatizah'),
+                'TAZKIRAH_HURAIAN': document.getElementById('huraianTazkirah'),
+                'TAZKIRAH_KESIMPULAN': document.getElementById('kesimpulan')
+            };
+
+            const localStorageKey = 'tazkirahPantunData'; // Key for local storage
+
+            // Function to clear all input fields
+            function clearInputFields() {
+                for (const key in inputFields) {
+                    if (inputFields[key]) {
+                        inputFields[key].value = '';
+                    }
+                }
+            }
+
+            // Function to parse text content and fill the form
+            function parseAndFillForm(text) {
+                clearInputFields(); // Clear fields before filling
+                const lines = text.split(/\r?\n/); // Split into lines, handling different newline types
+                const data = {};
+
+                lines.forEach(line => {
+                    const trimmedLine = line.trim();
+                    if (trimmedLine && !trimmedLine.startsWith('#')) { // Ignore empty lines and lines starting with #
+                        const colonIndex = trimmedLine.indexOf(':');
+                        if (colonIndex > 0) { // Ensure there's a key and a colon
+                            const key = trimmedLine.substring(0, colonIndex).trim();
+                            let value = trimmedLine.substring(colonIndex + 1).trim();
+
+                            // Handle escaped newlines like '\n' within the value for textareas
+                             if (value.includes('\\n')) {
+                                value = value.replace(/\\n/g, '\n');
+                             }
+
+                            data[key] = value;
+                        }
+                    }
+                });
+
+                // Fill the form fields with parsed data
+                let filledCount = 0;
+                for (const key in data) {
+                    if (inputFields[key]) {
+                        inputFields[key].value = data[key];
+                        filledCount++;
+                    } else {
+                        console.warn(`Tidak dapat mencari medan input untuk kunci fail: ${key}`);
+                    }
+                }
+
+                 if (filledCount > 0) {
+                    outputArea.innerHTML = `<p>Medan input berjaya diisi (${filledCount} medan) dari fail.</p>`;
+                    // Scroll to the input area after filling
+                    inputFields['PANTUN_PANTUN'].scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll to the first input field
+                 } else {
+                    outputArea.innerHTML = `<p>Fail dibaca, tetapi tiada data yang sesuai ditemui untuk mengisi medan input.</p>`;
+                 }
+
+
+            }
+
+            // Function to get all form data as an object
+            function getFormData() {
+                const data = {};
+                for (const key in inputFields) {
+                    if (inputFields[key]) {
+                         // Use the file keys as object keys for consistency
+                        const fileKey = Object.keys(inputFields).find(k => inputFields[k] === inputFields[key]);
+                        data[fileKey] = inputFields[key].value;
+                    }
+                }
+                return data;
+            }
+
+             // Function to fill form from a data object
+             function fillFormFromData(data) {
+                clearInputFields();
+                let filledCount = 0;
+                for (const key in data) {
+                    if (inputFields[key]) {
+                         // Ensure newlines stored as \n in data are correct in textarea
+                         let valueToSet = data[key];
+                         if (inputFields[key].tagName === 'TEXTAREA') {
+                             // Assuming data might be stored with \n, convert back if needed
+                             // This part might need adjustment based on how data was saved
+                             valueToSet = valueToSet.replace(/\\n/g, '\n'); // Simple example conversion
+                         }
+                        inputFields[key].value = valueToSet;
+                        filledCount++;
+                    } else {
+                         console.warn(`Tidak dapat mencari medan input untuk kunci data: ${key}`);
+                    }
+                }
+                 return filledCount;
+             }
+
+
+            // --- Fungsi Memaparkan Output ---
+            generateOutputButton.addEventListener('click', () => {
+                // Get values from input fields directly
+                const data = getFormData(); // Use helper function to get data
+
+                // Format the output
+                let outputHtml = '<h2>Tazkirah Pantun</h2>';
+
+                outputHtml += '<h3>PANTUN</h3>';
+                if (data['PANTUN_PANTUN']) outputHtml += `<p><strong>Pantun:</strong><br>${data['PANTUN_PANTUN'].replace(/\n/g, '<br>')}</p>`;
+                if (data['PANTUN_TEMA']) outputHtml += `<p><strong>Tema:</strong> ${data['PANTUN_TEMA']}</p>`;
+                if (data['PANTUN_MAKNA_PEMBAYANG']) outputHtml += `<p><strong>Makna Pembayang:</strong><br>${data['PANTUN_MAKNA_PEMBAYANG'].replace(/\n/g, '<br>')}</p>`;
+                if (data['PANTUN_MAKNA_PANTUN']) outputHtml += `<p><strong>Makna Pantun:</strong><br>${data['PANTUN_MAKNA_PANTUN'].replace(/\n/g, '<br>')}</p>`;
+                if (data['PANTUN_MAKNA_PERKATAAN']) outputHtml += `<p><strong>Makna Perkataan:</strong><br>${data['PANTUN_MAKNA_PERKATAAN'].replace(/\n/g, '<br>')}</p>`;
+                if (data['PANTUN_HURAIAN']) outputHtml += `<p><strong>Huraian Pantun:</strong><br>${data['PANTUN_HURAIAN'].replace(/\n/g, '<br>')}</p>`;
+                if (data['PANTUN_ISU']) outputHtml += `<p><strong>Isu Pantun:</strong> ${data['PANTUN_ISU']}</p>`;
+
+                outputHtml += '<h3>TAZKIRAH</h3>';
+                if (data['TAZKIRAH_ISU']) outputHtml += `<p><strong>Isu Tazkirah:</strong> ${data['TAZKIRAH_ISU']}</p>`;
+                if (data['TAZKIRAH_FIRMAN']) outputHtml += `<p><strong>Firman (Al-Quran):</strong><br>${data['TAZKIRAH_FIRMAN'].replace(/\n/g, '<br>')}</p>`;
+                if (data['TAZKIRAH_HADITH']) outputHtml += `<p><strong>Hadith:</strong><br>${data['TAZKIRAH_HADITH'].replace(/\n/g, '<br>')}</p>`;
+                if (data['TAZKIRAH_IJMAK_ULAMAK']) outputHtml += `<p><strong>Ijmak Ulamak:</strong><br>${data['TAZKIRAH_IJMAK_ULAMAK'].replace(/\n/g, '<br>')}</p>`;
+                if (data['TAZKIRAH_PANDANGAN_AZATIZAH']) outputHtml += `<p><strong>Pandangan Azatizah:</strong><br>${data['TAZKIRAH_PANDANGAN_AZATIZAH'].replace(/\n/g, '<br>')}</p>`;
+                if (data['TAZKIRAH_HURAIAN']) outputHtml += `<p><strong>Huraian Tazkirah:</strong><br>${data['TAZKIRAH_HURAIAN'].replace(/\n/g, '<br>')}</p>`;
+                if (data['TAZKIRAH_KESIMPULAN']) outputHtml += `<p><strong>Kesimpulan:</strong><br>${data['TAZKIRAH_KESIMPULAN'].replace(/\n/g, '<br>')}</p>`;
+
+                // Update the output area
+                outputArea.innerHTML = outputHtml || "<p>Tiada data input untuk dipaparkan.</p>"; // Handle empty case
+
+                 // Scroll to the output area
+                 outputArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+
+            // --- Fungsi File Reading (Diubah suai untuk Parsing) ---
+             // Trigger hidden file input click
+             selectFileButton.addEventListener('click', () => {
+                fileInput.click();
+             });
+
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        // Panggil fungsi parse dan isi borang
+                        parseAndFillForm(e.target.result);
+                    };
+                    reader.onerror = (error) => {
+                        outputArea.innerText = "Gagal membaca file.";
+                        console.error(error);
+                    };
+                    reader.readAsText(file);
+                }
+                 event.target.value = ''; // Clear the file input so selecting the same file again triggers change
+            });
+
+
+            // --- Fungsi Simpan ke Local Storage ---
+            saveButton.addEventListener('click', () => {
+                const dataToSave = getFormData();
+                 try {
+                    localStorage.setItem(localStorageKey, JSON.stringify(dataToSave));
+                    outputArea.innerHTML = '<p>Data input berjaya disimpan ke dalam browser (Local Storage).</p>';
+                 } catch (e) {
+                    outputArea.innerHTML = `<p>Gagal menyimpan data ke Local Storage: ${e}</p>`;
+                    console.error("Save failed:", e);
+                 }
+                 outputArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            // --- Fungsi Muat dari Local Storage ---
+            importButton.addEventListener('click', () => {
+                try {
+                    const savedData = localStorage.getItem(localStorageKey);
+                    if (savedData) {
+                        const data = JSON.parse(savedData);
+                         const filledCount = fillFormFromData(data);
+                         if (filledCount > 0) {
+                            outputArea.innerHTML = `<p>Data input berjaya dimuatkan (${filledCount} medan) dari browser (Local Storage).</p>`;
+                             // Scroll to the input area after filling
+                             inputFields['PANTUN_PANTUN'].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                         } else {
+                             outputArea.innerHTML = `<p>Data ditemui di Local Storage, tetapi tiada medan input yang dapat diisi.</p>`;
+                         }
+
+                    } else {
+                        outputArea.innerHTML = '<p>Tiada data tersimpan di dalam browser (Local Storage).</p>';
+                    }
+                } catch (e) {
+                    outputArea.innerHTML = `<p>Gagal memuatkan data dari Local Storage: ${e}</p>`;
+                    console.error("Load failed:", e);
+                }
+                 outputArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+
+            // --- Fungsi Ekspor sebagai File Teks ---
+            exportButton.addEventListener('click', () => {
+                const dataToExport = getFormData();
+                let fileContent = '';
+
+                 // Add header comments (optional, but good practice)
+                 fileContent += '# Data Tazkirah Pantun\n';
+                 fileContent += '# Format: KEY: VALUE\n';
+                 fileContent += '# Newlines within a value are represented by \\n\n\n';
+
+                 // Add Pantun section
+                 fileContent += '# BAHAGIAN PANTUN:\n';
+                 fileContent += `PANTUN_PANTUN: ${dataToExport['PANTUN_PANTUN'].replace(/\n/g, '\\n')}\n`; // Replace actual newlines with \n for file storage
+                 fileContent += `PANTUN_TEMA: ${dataToExport['PANTUN_TEMA'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `PANTUN_MAKNA_PEMBAYANG: ${dataToExport['PANTUN_MAKNA_PEMBAYANG'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `PANTUN_MAKNA_PANTUN: ${dataToExport['PANTUN_MAKNA_PANTUN'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `PANTUN_MAKNA_PERKATAAN: ${dataToExport['PANTUN_MAKNA_PERKATAAN'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `PANTUN_HURAIAN: ${dataToExport['PANTUN_HURAIAN'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `PANTUN_ISU: ${dataToExport['PANTUN_ISU'].replace(/\n/g, '\\n')}\n`;
+
+                 // Add Tazkirah section
+                 fileContent += '\n# BAHAGIAN TAZKIRAH:\n';
+                 fileContent += `TAZKIRAH_ISU: ${dataToExport['TAZKIRAH_ISU'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `TAZKIRAH_FIRMAN: ${dataToExport['TAZKIRAH_FIRMAN'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `TAZKIRAH_HADITH: ${dataToExport['TAZKIRAH_HADITH'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `TAZKIRAH_IJMAK_ULAMAK: ${dataToExport['TAZKIRAH_IJMAK_ULAMAK'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `TAZKIRAH_PANDANGAN_AZATIZAH: ${dataToExport['TAZKIRAH_PANDANGAN_AZATIZAH'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `TAZKIRAH_HURAIAN: ${dataToExport['TAZKIRAH_HURAIAN'].replace(/\n/g, '\\n')}\n`;
+                 fileContent += `TAZKIRAH_KESIMPULAN: ${dataToExport['TAZKIRAH_KESIMPULAN'].replace(/\n/g, '\\n')}\n`;
+
+
+                const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'tazkirah_pantun.txt'; // Suggested file name
+                link.style.display = 'none'; // Hide the link
+                document.body.appendChild(link);
+
+                 try {
+                    link.click(); // Trigger the download
+                    outputArea.innerHTML = '<p>Data input berjaya diekspor sebagai fail teks.</p>';
+                 } catch (e) {
+                     outputArea.innerHTML = `<p>Gagal mengekspor fail: ${e}</p>`;
+                     console.error("Export failed:", e);
+                 } finally {
+                    document.body.removeChild(link); // Clean up the DOM
+                    URL.revokeObjectURL(link.href); // Release the object URL
+                 }
+
+                 outputArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+
+            // --- Fungsi Drag & Drop (Diubah suai untuk Parsing) ---
+            document.addEventListener('dragover', (event) => {
+                event.preventDefault(); // Mencegah perilaku default browser
+                 outputArea.innerText = "Lepaskan fail di sini untuk memuatkan data."; // Beri feedback drag
+            });
+
+             document.addEventListener('dragleave', (event) => {
+                 // Clear the drag feedback if the drag leaves the document
+                 if (!event.relatedTarget || !document.documentElement.contains(event.relatedTarget)) {
+                     // Check if the drag is really leaving the window
+                      // Restore initial message or last output
+                     outputArea.innerHTML = outputArea.dataset.lastContent || "<p>Data yang dimasukkan akan dipaparkan di sini.</p><p>Anda juga boleh memuatkan data dari fail teks atau Local Storage.</p>";
+                 }
+             });
+
+
+            document.addEventListener('drop', (event) => {
+                event.preventDefault();
+                const files = event.dataTransfer.files;
+                if (files && files.length > 0) {
+                    const file = files[0];
+                    if (file.type === 'text/plain') {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            parseAndFillForm(e.target.result); // Parse and fill from the dropped file
+                        };
+                        reader.onerror = (error) => {
+                            outputArea.innerText = "Gagal membaca file yang di-drop.";
+                            console.error(error);
+                        };
+                        reader.readAsText(file);
+                    } else {
+                        outputArea.innerText = "File yang di-drop bukan file teks.";
+                    }
+                } else {
+                     outputArea.innerText = "Tiada fail yang di-drop.";
+                }
+                 // Store current output content before showing drag feedback
+                 outputArea.dataset.lastContent = outputArea.innerHTML;
+            });
+
+            // --- Initial Load from Local Storage on page load ---
+            // Attempt to load data from Local Storage when the page loads
+             try {
+                const savedData = localStorage.getItem(localStorageKey);
+                if (savedData) {
+                    const data = JSON.parse(savedData);
+                    const filledCount = fillFormFromData(data);
+                    if (filledCount > 0) {
+                        outputArea.innerHTML = `<p>Data tersimpan berjaya dimuatkan (${filledCount} medan) apabila halaman dibuka.</p>`;
+                    }
+                }
+             } catch (e) {
+                 console.error("Initial load failed:", e);
+             }
+             // Store initial output content
+             outputArea.dataset.lastContent = outputArea.innerHTML;
+
+        });
+    </script>
+</body>
+</html>
